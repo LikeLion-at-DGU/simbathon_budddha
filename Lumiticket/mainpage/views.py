@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Ticket, Comment
 from django.utils import timezone
 from qnapage import *
-from accounts import *
+from accounts.models import Profile
 from django.db.models import Count, F
 from django.core.paginator import Paginator
 # loading page관련 메서드
@@ -29,9 +29,11 @@ def new(request):
 def create(request): #티켓 적는 함수
     if request.user.is_authenticated:
         new_ticket = Ticket()
+        profile = get_object_or_404(Profile, user=request.user)
         #profile = Profile.objects.get(user=request.user) #profile 가져오는 거
         
-        new_ticket.writer = request.user #profile.nickname #request.user.profile.nickname
+        new_ticket.writer= profile.user #여기 수정해야 됨...
+        #profile.nickname #request.user.profile.nickname
         new_ticket.pub_date = timezone.now()
         new_ticket.body = request.POST['body']
         new_ticket.save()
