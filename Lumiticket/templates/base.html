@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script
+    src="https://kit.fontawesome.com/3130e06a9f.js"
+
+    crossorigin="anonymous">
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/base.css">
+</head>
+
+<!--상단 네브바-->
+
+<body>
+    <div class="wallpaper">
+        <nav class="nav-container">
+            <ul class="logo">
+                <li><a href="{% url 'mainpage:mainpage' %}">이루미 티켓</a></li>
+            </ul>
+            <a href = "{% url 'mypage:mypage' %}">
+                <ul class="icon">
+                    <li><a href = "{% url 'mypage:mypage' %}"><i class="fa-regular fa-circle-user" style="color: #ffffff;"></i></a></li>
+                </ul>
+        </nav>
+{% block content%} 
+
+{% endblock %}
+</div>
+
+</body>
+</html>
